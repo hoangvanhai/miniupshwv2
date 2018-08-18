@@ -72,8 +72,8 @@ __interrupt void epwm1_isr(void)
     Adc_PushAdcValue(sApp.boostVolt,       AdcResult.ADCRESULT1);
     Adc_PushAdcValue(sApp.inverterCurr,    AdcResult.ADCRESULT2);
     Adc_PushAdcValue(sApp.boostCurr,       AdcResult.ADCRESULT3);
-    Adc_PushAdcValue(sApp.lineDetectVolt,  AdcResult.ADCRESULT4);
-    Adc_PushAdcValue(sApp.loadDetectVolt,  AdcResult.ADCRESULT5);
+    Adc_PushAdcValue(sApp.lineDetectVolt,  AdcResult.ADCRESULT5);
+    Adc_PushAdcValue(sApp.loadDetectVolt,  AdcResult.ADCRESULT6);
 
     /*
      * Control duty cycle

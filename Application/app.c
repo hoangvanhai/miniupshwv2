@@ -103,7 +103,7 @@ void App_Init(SApp *pApp) {
     Adc_InitValue(pApp->boostCurr,
                   1,
                   _IQ24(Boost_Current_Adc_Coeff),
-                  1500,
+                  2048,
                   10,
                   Adc_Noise_Cuttoff_Freq);
 

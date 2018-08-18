@@ -56,7 +56,7 @@ BRet Boost_Init(SBooster *pBst) {
     pBst->dutyMaxPer    = _IQ24(Boost_Duty_Coeff);
     pBst->dutyCurrPer   = 0;
     pBst->setVolt       = _IQ20(Boost_Volt_Output);
-    LREP("BSET OUT: %d\r\n", Boost_Volt_Output);
+    LREP("BSET OUT: %d\r\n", (long)Boost_Volt_Output);
 
     PID_Init(&pBst->sPid, Boost_Kp, Boost_Ki, Boost_Kd, (Inverter_Pwm_Freq / 2),
              KP_A_COEFF, KP_B_COEFF);
@@ -142,12 +142,12 @@ void PWM_Boost_Init(PWM_REGS *pwmA, PWM_REGS *pwmB, uint32_t freq, uint16_t phas
                                                      // all others must set as slave
     PWM_2ChCntUpDownBoostCfg(pwmB, freq, 0, 0, 2);   // PWM1 Inverter is setting as master,
 
-//    COMP_BoosterTripZoneConfig((struct COMP_REGS*)&Comp2Regs,
-//                               _IQ20int(_IQ20(1023 * Boost_SC_Protect_Value *
-//                               Adc_Booster_Shunt_Volt_Rat / Adc_Reference_Volt)));
-
     COMP_BoosterTripZoneConfig((struct COMP_REGS*)&Comp2Regs,
-                               _IQ20int(_IQ20(1023 * 2.0 / Adc_Reference_Volt)));
+                               (uint16_t)(1023 * (float)Boost_SC_Protect_Value *
+                               (float)Adc_Booster_Shunt_Volt_Rat / (float)Adc_Reference_Volt));
+
+    /* COMP_BoosterTripZoneConfig((struct COMP_REGS*)&Comp2Regs,
+                               _IQ20int(_IQ20(1023 * 1.3 / Adc_Reference_Volt))); */
 
     PWM_BoosterConfigTripZone(pwmA);
     PWM_BoosterConfigTripZone(pwmB);

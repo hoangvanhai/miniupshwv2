@@ -56,7 +56,7 @@
 // Nếu điện áp acquy được chọn là 12 thì gán tham số acquy như sau:
 // chỉ khi điện áp acquy trong dải giữa under và over mới cho mạch công suất hoạt động.
 #if Batt_Volt_Sys == 12
-#define Batt_Under_Volt                 1 // Vdc. Định nghĩa điện áp acquy thấp
+#define Batt_Under_Volt                 5 // Vdc. Định nghĩa điện áp acquy thấp
 #define Batt_Over_Volt                  14.5 // Vdc. Định nghĩa điện áp acquy cao.
 #define Batt_Hyst_Volt                  0.5  // Vdc. Định nghĩa mắt trễ cho bảo vệ điện áp hoặc cao
 #elif Batt_Volt_Sys == 24
@@ -78,14 +78,14 @@
 #define Adc_Inverter_Current_Rat        (Adc_Reference_Volt /   \
                                         (Adc_Inverter_Shunt_Volt_Rat * Adc_Max_Value_12_Bits))
 
-#define Adc_Booster_Shunt_Volt_Rat      (0.14)  //(0.1134)    //(0.123)
+#define Adc_Booster_Shunt_Volt_Rat      (0.01)  //(0.14)  //(0.1134)    //(0.123)
 
 #define Batt_Volt_Adc_Coeff             (0.0107260726072607)
 
 ////////////////////// BOOST CONFIG SECTION ///////////////////////////////////
 // Định nghĩa tham số phần mềm mạch BOOST điện áp.
 #define Boost_Pwm_Freq                  (50000) //(50000)      //hz, tần số chuyển mạch mạch boost tính theo Khz.
-#define Boost_Duty_Coeff                (0.8)   //(0.4)   //(0.95)       //Duty cycle tối đa của mạch cầu H. CHuyển mạch cứng tương tự Push-pull.
+#define Boost_Duty_Coeff                (0.9)   //(0.4)   //(0.95)       //Duty cycle tối đa của mạch cầu H. CHuyển mạch cứng tương tự Push-pull.
 #define Boost_Start_Percen_F            (0.0)
 
 // coeff no load
@@ -99,7 +99,7 @@
 #define Boost_Kd                        (0.0)         //0.1 // Hệ số Kd tầng boost
 
 // Định nghĩa tham số bảo vệ tầng BOOST điện áp.
-#define Boost_Trip_Curr                 20.0 // mVdc. Mức điện áp bảo vệ quá dòng cho mạch Boost
+#define Boost_Trip_Curr                 25.0 // mVdc. Mức điện áp bảo vệ quá dòng cho mạch Boost
 #define Boost_Fault_Clear_Time          100  // ms. Dải từ 1-1000ms. Thời gian clear sự kiện quá dòng.
 #define Boost_Stage_Restart_Time        10   // Dải từ 0-100. Số lần clear bảo vệ quá dòng, hết số lần này khóa mạch luôn.
 #define Boost_Current_Adc_Coeff         (Adc_Reference_Volt /   \
@@ -108,9 +108,9 @@
 
 #define Boost_Voltage_Adc_Coeff         (0.2122954444935863)    //(0.2086351782092141)   //(0.2122954444935863)    //(0.201680672268907) //(0.2142857142857143)  // convert ADC value to boost voltage
 #define Boost_Transform_Coeff           35
-#define Boost_Volt_Output               130  //335 //(32) //335
+#define Boost_Volt_Output               220 //180 //220 //180 //335 //(32) //335
 
-#define Boost_SC_Protect_Value          (15) // A
+#define Boost_SC_Protect_Value          (130) // A peak current for protect half cycle transformer
 
 ////////////////////// INVERTER CONFIG SECTION ///////////////////////////////////
 

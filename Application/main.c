@@ -163,11 +163,12 @@ void main(void)
 //             (long)AdcResult.ADCRESULT6);
 
 
-        LREP("batt volt: %d boost volt: %d duty: 0.%03d curr %d\r\n",
+        LREP("batt volt: %d boost volt: %d duty: 0.%03d curr %d adc: %d\r\n",
              (long)_IQ20int(sApp.battVolt.realValue),
              (long)_IQ20int(sApp.boostVolt.realValue),
              (long)_IQ20int(_IQ20mpyIQX(sApp.sBooster.dutyCurrPer, 24, _IQ20(1000), 20)),
-             (long)(sApp.boostCurr.avgValue));
+             (long)_IQ20int(sApp.boostCurr.realValue),
+             (long)sApp.boostCurr.avgValue);
 
 
 //        LREP("batt volt: %d boost volt: %d duty: 0.%03d KD: 0.%03d\r\n",
